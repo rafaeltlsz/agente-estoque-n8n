@@ -55,12 +55,12 @@ A explicação completa está em [docs/arquitetura.md](docs/arquitetura.md).
 
 ## Tecnologias utilizadas
 
-- n8n
-- Gemini API
-- Telegram Bot
-- Google Planilhas
-- JavaScript
-- JSON
+![n8n](https://img.shields.io/badge/n8n-EA4B71?style=for-the-badge&logo=n8n&logoColor=white)
+![Gemini](https://img.shields.io/badge/Gemini_API-4285F4?style=for-the-badge&logo=googlegemini&logoColor=white)
+![Telegram](https://img.shields.io/badge/Telegram_Bot-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)
+![Google Sheets](https://img.shields.io/badge/Google_Planilhas-34A853?style=for-the-badge&logo=googlesheets&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![JSON](https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white)
 
 ## Estrutura do repositório
 
