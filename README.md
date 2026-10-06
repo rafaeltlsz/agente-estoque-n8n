@@ -6,7 +6,7 @@ Projeto individual, desenvolvido em junho de 2026 com **n8n**, **Gemini API** e 
 
 ## Demonstração
 
-![Conversa com o bot no Telegram](imagens/conversa-telegram.png)
+![Conversa com o bot no Telegram](downloads/conversa-telegram.png)
 
 <!-- Quando os vídeos estiverem no YouTube (não listado), descomente e troque os links:
 - [Vídeo 1: conversa com o bot no Telegram](LINK_DO_VIDEO_1)
@@ -30,7 +30,7 @@ Na demonstração, o estoque começa em 10 unidades e, depois da retirada de 5, 
    - **Registro:** adiciona uma linha na planilha com a movimentação e responde com a confirmação.
 4. O bot envia a resposta ao usuário no Telegram.
 
-![Fluxo no n8n](imagens/fluxo-n8n.png)
+![Fluxo no n8n](downloads/fluxo-n8n.png)
 
 ## Tecnologias
 
