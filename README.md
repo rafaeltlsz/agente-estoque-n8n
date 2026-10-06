@@ -1,54 +1,98 @@
 # Agente de Controle de Estoque com IA
 
-Protótipo de um agente de IA para controle de estoque, com interação por mensagens no Telegram. O usuário escreve em linguagem natural, como "Guardar 10 controles no estoque" ou "Quantidade de controles no estoque?", e o fluxo registra a movimentação ou consulta o estoque atual em uma planilha.
+Protótipo de agente de IA para controle de estoque via Telegram, criado com **n8n**, **Gemini API** e **Google Planilhas**.
 
-Projeto individual, desenvolvido em junho de 2026 com **n8n**, **Gemini API** e **Google Planilhas**.
+O usuário envia mensagens em linguagem natural, como `Guardar 10 controles no estoque` ou `Quantidade de controles no estoque?`, e o fluxo interpreta a intenção, registra movimentações ou consulta o saldo atual em uma planilha.
+
+Projeto individual desenvolvido em junho de 2026 para praticar automação, integração entre ferramentas e uso de IA em um fluxo com aplicação prática.
+
+## Visão geral
+
+```text
+Telegram -> n8n -> Gemini API -> JavaScript -> Google Planilhas -> Telegram
+```
+
+O bot funciona como uma interface simples para controle de estoque. A IA interpreta a mensagem, o n8n organiza o fluxo, uma etapa em JavaScript trata a resposta e o Google Planilhas armazena as movimentações.
 
 ## Demonstração
 
-![Conversa com o bot no Telegram]
-<img width="1440" height="904" alt="conversa-telegram" src="https://github.com/user-attachments/assets/e3bb9cab-d826-4470-adb8-87bc73d89bd6" />
+<img width="1440" height="904" alt="Conversa com o bot no Telegram" src="https://github.com/user-attachments/assets/e3bb9cab-d826-4470-adb8-87bc73d89bd6" />
 
-<!-- Quando os vídeos estiverem no YouTube (não listado), descomente e troque os links:
-- [Vídeo 1: conversa com o bot no Telegram](LINK_DO_VIDEO_1)
-- [Vídeo 2: execução do fluxo no n8n](LINK_DO_VIDEO_2)
--->
+Na demonstração, o estoque começa com 10 unidades. Depois de uma retirada de 5 unidades, a consulta retorna 5 unidades disponíveis.
 
-## O que ele faz
+<img width="1440" height="760" alt="Fluxo no n8n" src="https://github.com/user-attachments/assets/707c3f5c-0d9e-453c-a7d6-307646d80de7" />
 
-- **Registra entradas:** "Guardar 10 controles no estoque"
-- **Registra saídas:** "Retirar 5 controles do estoque"
-- **Consulta o estoque:** "Quantidade de controles no estoque?"
+## Funcionalidades
 
-Na demonstração, o estoque começa em 10 unidades e, depois da retirada de 5, a consulta retorna 5 unidades.
+- Registrar entrada de produtos no estoque.
+- Registrar saída de produtos do estoque.
+- Consultar a quantidade atual disponível.
+- Interpretar comandos escritos em linguagem natural.
+- Responder automaticamente pelo Telegram.
+- Usar uma planilha como base de dados simples.
+
+## Exemplos de mensagens
+
+```text
+Guardar 10 controles no estoque
+Retirar 5 controles do estoque
+Quantidade de controles no estoque?
+```
+
+Veja mais exemplos em [docs/exemplos-de-uso.md](docs/exemplos-de-uso.md).
 
 ## Como funciona
 
-1. A mensagem enviada ao bot chega ao fluxo pelo **gatilho do Telegram**.
-2. Os campos da mensagem são organizados e enviados à **Gemini API**, que interpreta o texto.
-3. Um **código em JavaScript** trata a resposta do modelo, e um nó **"Se"** decide o caminho:
-   - **Consulta:** lê as linhas da planilha, calcula o estoque atual e responde no Telegram.
-   - **Registro:** adiciona uma linha na planilha com a movimentação e responde com a confirmação.
-4. O bot envia a resposta ao usuário no Telegram.
+1. O usuário envia uma mensagem para o bot no Telegram.
+2. O gatilho do Telegram inicia o fluxo no n8n.
+3. A mensagem é enviada para a Gemini API para identificação da intenção.
+4. Um trecho em JavaScript organiza a resposta da IA.
+5. Um nó condicional decide se a operação é consulta ou registro.
+6. O fluxo lê ou atualiza a planilha do Google.
+7. O bot responde ao usuário no Telegram.
 
-![Fluxo no n8n]
-<img width="1440" height="760" alt="fluxo-n8n" src="https://github.com/user-attachments/assets/707c3f5c-0d9e-453c-a7d6-307646d80de7" />
+A explicação completa está em [docs/arquitetura.md](docs/arquitetura.md).
 
-## Tecnologias
+## Tecnologias utilizadas
 
-n8n · Gemini API · Telegram Bot · Google Planilhas · JavaScript · JSON
+- n8n
+- Gemini API
+- Telegram Bot
+- Google Planilhas
+- JavaScript
+- JSON
 
-## Status e limitações
+## Estrutura do repositório
 
-- **Protótipo:** o fluxo rodava em modo de teste. Era preciso iniciar a execução no n8n a cada mensagem enviada ao bot; depois disso, todo o processamento era automático.
-- **Arquivo do fluxo indisponível:** o workspace do n8n Cloud usado no projeto expirou, então o fluxo exportado não está neste repositório. A documentação reúne prints e vídeos da execução.
+```text
+.
+├── README.md
+└── docs/
+    ├── arquitetura.md
+    ├── exemplos-de-uso.md
+    ├── fluxo-exemplo.md
+    └── limitacoes.md
+```
+
+## Status do projeto
+
+Este projeto está em estágio de **protótipo funcional documentado**.
+
+O fluxo original foi criado no n8n Cloud, mas o workspace usado no projeto expirou. Por isso, o arquivo exportado do fluxo não está disponível neste repositório. Para manter o projeto compreensível, a documentação reúne prints, explicação da arquitetura e um fluxo-exemplo reconstruído em alto nível.
+
+Mais detalhes em [docs/limitacoes.md](docs/limitacoes.md).
 
 ## Próximos passos
 
-- Publicar o fluxo para o bot responder continuamente, sem iniciar a execução manualmente.
-- Controlar mais de um produto no mesmo estoque.
-- Enviar alerta quando o estoque estiver baixo.
+- Publicar o fluxo para o bot responder continuamente.
+- Controlar múltiplos produtos no mesmo estoque.
+- Adicionar alerta de estoque baixo.
+- Recriar e exportar o fluxo em JSON.
+- Evoluir a planilha para um banco de dados simples.
 
 ## Autor
 
-Rafael Taborda Lopes · [LinkedIn](https://www.linkedin.com/in/rafael-lopes0) · [GitHub](https://github.com/rafaeltlsz)
+Rafael Taborda Lopes
+
+- [LinkedIn](https://www.linkedin.com/in/rafael-lopes0)
+- [GitHub](https://github.com/rafaeltlsz)
