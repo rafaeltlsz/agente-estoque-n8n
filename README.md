@@ -4,7 +4,7 @@ Protótipo de agente de IA para controle de estoque via Telegram, criado com **n
 
 O usuário envia mensagens em linguagem natural, como `Guardar 10 controles no estoque` ou `Quantidade de controles no estoque?`, e o fluxo interpreta a intenção, registra movimentações ou consulta o saldo atual em uma planilha.
 
-Projeto individual desenvolvido em junho de 2026 para praticar automação, integração entre ferramentas e uso de IA em um fluxo com aplicação prática.
+Projeto em equipe desenvolvido em junho de 2026 para praticar automação, integração entre ferramentas e uso de IA em um fluxo com aplicação prática.
 
 ## Visão geral
 
